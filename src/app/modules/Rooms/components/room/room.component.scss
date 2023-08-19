@@ -1,0 +1,13 @@
+.roomButtons{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icon-container {
+    transition: background-color 0.3s ease;
+  }
+  
+  .icon-container:hover {
+    background-color: rgba(0, 0, 0, 0.1); // Lekkie podświetlenie tła po najechaniu
+  }

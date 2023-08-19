@@ -1,0 +1,32 @@
+@import '_colors';
+@import '_mixin';
+
+.snackBar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .mat-icon{
+        font-size: 2rem;
+        height: 2rem;
+        width: 2rem;
+        margin-right: .5rem;
+    }
+}
+
+
+.success-snackbar,
+.error-snackbar {
+    background: #292929 !important;
+    color: whitesmoke !important;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.success-snackbar .mat-icon {
+    color: $success-color
+}
+.error-snackbar .mat-icon {
+    color: $error-color
+}
+

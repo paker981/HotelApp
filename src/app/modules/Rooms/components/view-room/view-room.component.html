@@ -1,0 +1,13 @@
+<div *ngIf="(data | async) as roomData">
+    <app-room [data]="roomData['room']">
+        <mat-select *ngIf="role==='admin'" [formControl] = "form">
+            <mat-option *ngFor="let option of roomStates | keyvalue" [value]="option.value">
+              {{ option.value }}
+            </mat-option>
+        </mat-select>
+    </app-room>
+    <div>
+        <button mat-raised-button color="primary" (click)="goBack()">Back</button>
+        <button *ngIf="role==='admin'" mat-raised-button color="primary" (click)="onEdit(roomData['room'].number)">Edit</button>
+    </div>
+</div>

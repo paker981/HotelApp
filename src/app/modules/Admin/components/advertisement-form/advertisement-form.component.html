@@ -1,0 +1,37 @@
+<mat-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="form" [optional]="true" [editable]="true">
+      <app-step1 [form]="form"></app-step1>
+      <div>
+        <button mat-raised-button color="primary" matStepperNext>Next-></button>
+      </div>
+    </mat-step>
+  
+    <mat-step [stepControl]="form" [optional]="true" [editable]="true">
+      <app-step2 [form]="form"></app-step2>
+      <button mat-raised-button color="primary"  matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary"  matStepperNext>Next</button>
+    </mat-step>
+  
+    <mat-step [optional]="true" [editable]="true">
+      <app-step3 [form]="form"></app-step3>
+
+      <button mat-raised-button color="primary"  matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary"  matStepperNext>Next</button>
+    </mat-step>
+  
+    <mat-step>
+      <app-step4 [form]="form"></app-step4>
+      <div>
+        <button mat-raised-button color="primary"  matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()">Zatwierdź</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
+  <!-- 
+
+    
+    to jest reużywalne :) ng-template + data {next: boolean, prev: boolean, submit: boolen}
+      <button mat-raised-button color="primary"  matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary"  matStepperNext>Next</button>
+   -->

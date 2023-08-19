@@ -1,0 +1,13 @@
+/* login.component.css */
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #4a90e2, #7b5ac2);
+  }
+  
+  .login-card {
+    width: 300px;
+    padding: 20px;
+  }

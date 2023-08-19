@@ -1,0 +1,6 @@
+<div>
+    <mat-label>Room numbers:</mat-label>
+      <mat-checkbox class="service_checkbox" *ngFor="let room of availableRooms; let i = index" (change)="onRoomChange($event, room)">
+        {{ room.number }}
+      </mat-checkbox>
+  </div>
