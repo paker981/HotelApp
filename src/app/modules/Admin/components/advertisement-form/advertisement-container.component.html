@@ -1,0 +1,41 @@
+<mat-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="form.controls.basicStep" [optional]="true" [editable]="true">
+      <app-basic-info-step (formSubmitted)="onSubmitBasicInfo($event)"></app-basic-info-step>
+      <div>
+        <ng-container *ngTemplateOutlet="nav; context: { showPrevButton: false, showNextButton: true, showSubmitButton: false }"></ng-container>
+      </div>
+    </mat-step>
+  
+    <mat-step [stepControl]="form.controls.selectedServices" [optional]="true" [editable]="true">
+      <app-services-step #service (formSubmitted)="onSubmitServices($event)"></app-services-step>
+      <ng-container *ngTemplateOutlet="nav; context: { showPrevButton: true, showNextButton: true, showSubmitButton: false }"></ng-container>
+    </mat-step>
+  
+    <mat-step [stepControl]="form.controls.selectedRooms" [optional]="true" [editable]="true">
+      <app-rooms-step (formSubmitted)="onSubmitRooms($event)"></app-rooms-step>
+
+      <ng-container *ngTemplateOutlet="nav; context: { showPrevButton: true, showNextButton: true, showSubmitButton: false }"></ng-container>
+    </mat-step>
+  
+    <mat-step>
+      <app-summary-step [form]="form"></app-summary-step>
+      <div>
+        <ng-container *ngTemplateOutlet="nav; context: { showPrevButton: true, showNextButton: false, showSubmitButton: true }"></ng-container>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
+ 
+
+    <ng-template #nav let-showPrevButton="showPrevButton" let-showNextButton="showNextButton" let-showSubmitButton="showSubmitButton">
+      <button *ngIf="showPrevButton" mat-raised-button color="primary" matStepperPrevious (click)="stepper.previous()">Back</button>
+      <button *ngIf="showNextButton" mat-raised-button color="primary" matStepperNext (click)="stepper.next()">Next</button>
+      <button *ngIf="showSubmitButton" mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()">Submit</button>
+    </ng-template>
+
+   <!-- 
+    
+    to jest reużywalne :) ng-template + data {next: boolean, prev: boolean, submit: boolen}
+      <button mat-raised-button color="primary"  matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary"  matStepperNext>Next</button>
+   -->

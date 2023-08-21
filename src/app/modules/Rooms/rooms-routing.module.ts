@@ -6,17 +6,13 @@ import { ViewRoomComponent } from "./components/view-room/view-room.component";
 import { roomDataResolver } from "./resolver/room-data.resolver";
 
 const routes: Routes = [
+
     {
       path: '',
-      redirectTo: 'rooms',
-      pathMatch: 'full'
-    },
-    {
-      path: 'rooms',
       component: RoomListComponent
     },
     {
-      path: 'room/:id',
+      path: 'details/:id',
       component: ViewRoomComponent,
       resolve: {room: roomDataResolver}
     }

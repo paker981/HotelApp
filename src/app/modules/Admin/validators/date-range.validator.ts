@@ -1,19 +1,31 @@
-import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
-import { AdvertisementForm } from '../types/advertisement';
+import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 
-export function dateRangeValidator(group: AbstractControl): ValidationErrors | null {
-    const startDate = group.get('startDate')?.value;
-    const endDate = group.get('endDate')?.value;
-  
-    if (startDate === null && endDate === null) {
-        return null; // Data zakończenia jest późniejsza niż data rozpoczęcia
-      } else if (startDate  && endDate && startDate > endDate) {
-        return { dateRange: true }; // Błąd - data zakończenia jest wcześniejsza niż data rozpoczęcia
-      } else {
-        return null; // Brak błędu, dopóki obie daty nie są dostępne i spełniają warunki
-      }
-  }
+export function startDateValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const startDate = control.value as Date;
+    const endDateControl = control.root.get('endDate');
+
+    if (startDate && endDateControl?.value && startDate > endDateControl.value) {
+      return { startDateError: true };
+    }
+
+    return null; // Validation passed
+  };
+}
+
+export function endDateValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const endDate = control.value as Date;
+    const startDateControl = control.root.get('startDate');
+
+    if (endDate && startDateControl?.value && endDate < startDateControl.value) {
+      return { endDateError: true };
+    }
+
+    return null; // Validation passed
+  };
+}
 
 
   // validator na formGroup

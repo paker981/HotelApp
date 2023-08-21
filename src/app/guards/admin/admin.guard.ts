@@ -10,16 +10,12 @@ import { AuthService } from 'src/app/modules/Auth/services/auth.service';
 export const adminGuard: CanMatchFn = (route, segments) => {
   const snackBar = inject(MatSnackBar);
   const authService = inject(AuthService);
-  const router = inject(Router);
-  const previousUrl = router.routerState.snapshot.url;
   
-  const role = roleMatcher(previousUrl.match(rolePattern)![1])
-  const isAdmin = authService.isAdmin()
-  if(!isAdmin || !(role === Role.ADMIN) ){
-    
-    const returnUrlTree = router.parseUrl(previousUrl); 
+
+  const isAdmin = authService.isLoggedIn(Role.ADMIN)
+  if(!isAdmin){
     CustomSnackBarComponent.openErrorSnackBar(snackBar, 'Only admin access!', 'Close')
-    return returnUrlTree;
+    return false;
   }
   return isAdmin;
 };

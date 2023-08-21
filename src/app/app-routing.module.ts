@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/Auth/login/login.component';
-import { canMatchDashboardGuard } from './guards/dashboard/can-load-dashboard.guard';
 import { AdminPreloadStrategy } from './modules/Auth/preloading/adminPreloadStrategy.class';
+import { workerdGuard } from './guards/worker/worker.guard';
+import { adminGuard } from './guards/admin/admin.guard';
 
 const routes: Routes = [
   {
@@ -10,19 +11,14 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'dashboard/:role',
+    path: 'dashboard',
     loadChildren: () => import('./modules/Dashboard/dashboard.module').then(m => m.DashboardModule), 
-    canMatch: [canMatchDashboardGuard]
+    canMatch: [workerdGuard]
   },
   {
-    path: 'dashboard/admin',
-    loadChildren: () => import('./modules/Dashboard/dashboard.module').then(m => m.DashboardModule), 
-    canMatch: [canMatchDashboardGuard]
-  },
-  {
-    path: 'dashboard/user',
-    loadChildren: () => import('./modules/Dashboard/dashboard.module').then(m => m.DashboardModule), 
-    canMatch: [canMatchDashboardGuard]
+    path: 'dashboard-admin',
+    loadChildren: () => import('./modules/dashboard-admin/dashboard-admin.module').then(m=>m.DashboardAdminModule),
+    canMatch: [adminGuard]
   },
   {
     path: '**',

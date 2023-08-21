@@ -15,9 +15,9 @@ import { UntilDestroy } from '@ngneat/until-destroy';
   styleUrls: ['./view-room.component.scss']
 })
 export class ViewRoomComponent{
-  protected data = this.route.data; // TODO: nie potrzebna asynchronicznosc => this.route.snapshot
-  protected role = this.route.snapshot.params['role'];
+  
   protected roomStates = RoomState;
+  protected data = this.route.snapshot.data['room']; // TODO: nie potrzebna asynchronicznosc => this.route.snapshot
   protected form: FormControl<RoomState> = new FormControl('' as unknown as RoomState,Validators.required) as FormControl<RoomState>;
 
   constructor(
@@ -28,10 +28,10 @@ export class ViewRoomComponent{
     ){}
 
 
-  protected goBack(){
-    // TODO: dyrektywa
-    this.location.back();
-  }
+  // protected goBack(){
+  //   // TODO: dyrektywa
+  //   this.location.back();
+  // }
 
   protected onEdit(roomNumber: number){
     if(this.form.invalid){

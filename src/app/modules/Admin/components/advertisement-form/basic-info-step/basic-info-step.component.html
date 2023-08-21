@@ -1,0 +1,38 @@
+<div>
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Title" [formControl]="form.controls.title">
+      <mat-error *ngIf="form.controls.title.hasError('required')">Title is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Description" [formControl]="form.controls.description">
+      <mat-error *ngIf="form.controls.description.hasError('required')">Description is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+      <input matInput [matDatepicker]="startDatePicker" placeholder="Start Date" [formControl]="form.controls.startDate">
+      <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+      <mat-error *ngIf="form.controls.startDate.hasError('required')">Start Date is required</mat-error>
+      <mat-error *ngIf="form.controls.startDate.hasError('startDateError')">End Date cannot be earlier than Start Date</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline">
+      <input matInput [matDatepicker]="endDatePicker" placeholder="End Date" [formControl]="form.controls.endDate">
+      <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+      <mat-error *ngIf="form.controls.endDate.hasError('required')">End Date is required</mat-error>
+      <mat-error *ngIf="form.controls.endDate.hasError('endDateError')">End Date cannot be earlier than Start Date</mat-error>
+    </mat-form-field>
+  </div>
+
+  
+
+  <mat-slider thumbLabel min="1" max="10" step="1" >
+    <input matSliderThumb [formControl]="form.controls.duration">
+  </mat-slider>
+  <mat-label>Duration: {{form.controls.duration.value}}</mat-label>

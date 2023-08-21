@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectorRef, ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Room } from '../../types/room.types';
 
 @Component({
@@ -9,4 +9,10 @@ import { Room } from '../../types/room.types';
 })
 export class RoomComponent {
   @Input({required: true}) data!: Room;
+
+  constructor(private cDRef: ChangeDetectorRef){}
+
+  triggerChange(){
+    this.cDRef.detectChanges();
+  }
 }

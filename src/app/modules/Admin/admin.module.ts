@@ -1,30 +1,39 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdvertisementFormComponent } from './components/advertisement-form/advertisement-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../Material/material.module';
 import { AdminRoutingModule } from './admin-routing.module';
-import { Step1Component } from './components/advertisement-form/step1/step1.component';
-import { Step2Component } from './components/advertisement-form/step2/step2.component';
-import { Step3Component } from './components/advertisement-form/step3/step3.component';
-import { Step4Component } from './components/advertisement-form/step4/step4.component';
+import { SummaryStepComponent } from './components/advertisement-form/summary-step/summary-step.component';
+import { BasicInfoStepComponent } from './components/advertisement-form/basic-info-step/basic-info-step.component';
+import { RoomsStepComponent } from './components/advertisement-form/rooms-step/rooms-step.component';
+import { ServicesStepComponent } from './components/advertisement-form/services-step/services-step.component';
+import { AdvertisementContainerComponent } from './components/advertisement-form/advertisement-container.component';
+import { SharedModule } from '../shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import { CdkStepper } from '@angular/cdk/stepper';
 
 
 
 @NgModule({
   declarations: [
-    AdvertisementFormComponent,
-    Step1Component, // TODO: rename
-    Step2Component, // TODO: rename
-    Step3Component, // TODO: rename
-    Step4Component // TODO: rename
+    AdvertisementContainerComponent,
+    SummaryStepComponent,
+    BasicInfoStepComponent,
+    RoomsStepComponent,
+    ServicesStepComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
-    AdminRoutingModule
-
+    AdminRoutingModule,
+    SharedModule,
+    CdkStepperModule
+  ],
+  providers: [
+    CdkStepper
   ]
 })
 export class AdminModule { }

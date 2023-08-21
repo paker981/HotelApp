@@ -1,8 +1,10 @@
 <mat-grid-list cols="4" gutterSize="16px" style="display: flex;">
-  <mat-grid-tile *ngFor="let room of data trackById">
+  <mat-grid-tile *ngFor="let room of data$ | async trackById">
     <app-room [data]="room">
-      <mat-icon class="icon-container" [routerLink]="['../room',room.number]">info</mat-icon>
-      <button *ngIf="room.state | notifyConditional: role" mat-raised-button color="warn" (click)="onNotifyAdmin(room.number)">Notify admin about room!</button>
+      <mat-icon class="icon-container" [routerLink]="['details',room.number]">info</mat-icon>
+      <ng-template workerOnly>
+        <button *ngIf="room.state === state.DIRTY" mat-raised-button color="warn" (click)="onNotifyAdmin(room.number)">Notify admin about room!</button>
+      </ng-template>
       <!-- TODO: show/hide  If admin directive onlyAdmin -->
     </app-room>
   </mat-grid-tile>

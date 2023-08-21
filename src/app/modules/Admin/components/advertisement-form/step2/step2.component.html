@@ -1,6 +1,0 @@
-<div>
-    <mat-label>Servieces:</mat-label>
-    <mat-checkbox class="center-item" *ngFor="let service of services | keyvalue; let index = index" (change)="onServiceChange($event, service.value,index)">
-      <img src="../../../../../assets/{{ service.value }}.png">
-    </mat-checkbox>
-</div>

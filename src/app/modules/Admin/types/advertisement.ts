@@ -1,4 +1,4 @@
-import { Form, FormArray, FormControl } from "@angular/forms";
+import { Form, FormArray, FormControl, FormGroup } from "@angular/forms";
 import { Room } from "../../Rooms/types/room.types";
 
 export enum Services {
@@ -16,12 +16,26 @@ export interface Advertisement {
     selectedRooms: string[];
   }
 
-export type AdvertisementForm = {
+export type BasicStepForm ={
   title: FormControl<string>,
   description: FormControl<string>,
   startDate: FormControl<Date>,
   endDate: FormControl<Date>,
   duration: FormControl<number>,
+}
+
+export type BasicStepData = {
+  title: string,
+  description: string,
+  startDate: Date,
+  endDate: Date,
+  duration: number
+}
+
+
+
+export type AdvertisementForm = {
+  basicStep: FormGroup<BasicStepForm>,
   selectedServices: FormArray<FormControl<Services>>,
   selectedRooms: FormArray<FormControl<Room>>,
 }  

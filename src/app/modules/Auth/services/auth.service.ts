@@ -19,8 +19,8 @@ export class AuthService {
     this.storageService.saveData(login, newToken)
   }
 
-  isAdmin(): boolean {
-    return this.isLoggedIn(Role.ADMIN)
+  logOut(){
+    this.storageService.clear()
   }
 
   isLoggedIn(role: Role): boolean{
