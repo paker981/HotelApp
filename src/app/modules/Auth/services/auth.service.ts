@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { generateToken } from 'src/app/helpers/token.generator';
 import { AbstractStorageService, Role } from 'src/app/interfaces/storage.interface';
-import { STORAGE_TOKEN } from 'src/app/tokens/storage.token';
+import { STORAGE_SERVICE } from 'src/app/tokens/storage.token';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { STORAGE_TOKEN } from 'src/app/tokens/storage.token';
 export class AuthService {
 
   constructor(
-    @Inject(STORAGE_TOKEN) private storageService: AbstractStorageService,
+    @Inject(STORAGE_SERVICE) private storageService: AbstractStorageService,
     private router: Router
     ) { }
 
