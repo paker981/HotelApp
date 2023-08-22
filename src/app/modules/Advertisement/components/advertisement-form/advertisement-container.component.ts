@@ -36,13 +36,16 @@ export class AdvertisementContainerComponent {
         basicStep:  new FormGroup<BasicStepForm>({
           title: new FormControl('', Validators.required) as FormControl<string>,
           description: new FormControl('', Validators.required) as FormControl<string>,
-          startDate: new FormControl('' as unknown as Date, [Validators.required, startDateValidator()]) as FormControl<Date>,
-          endDate: new FormControl('' as unknown as Date, [Validators.required, endDateValidator()]) as FormControl<Date>,
+          startDate: new FormControl('' as unknown as Date, [Validators.required]) as FormControl<Date>,
+          endDate: new FormControl('' as unknown as Date, [Validators.required]) as FormControl<Date>,
           duration: new FormControl(1,[Validators.required,Validators.min(1),Validators.max(10)]) as FormControl<number>,
         }),
         selectedServices: new FormArray([],Validators.required) as unknown as FormArray<FormControl<Services>>,
         selectedRooms: new FormArray([]) as unknown as FormArray<FormControl<Room>>
     })
+
+    this.form.controls.basicStep.controls.startDate.addValidators(startDateValidator(this.form.controls.basicStep.controls.endDate));
+    this.form.controls.basicStep.controls.endDate.addValidators(endDateValidator(this.form.controls.basicStep.controls.startDate));
   }
 
 

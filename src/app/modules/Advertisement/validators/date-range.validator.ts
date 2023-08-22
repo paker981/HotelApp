@@ -1,10 +1,10 @@
 import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 // TODO: przekaż tutaj kontrolke/nazwe kontrolki
-export function startDateValidator(): ValidatorFn {
+export function startDateValidator(endControl: AbstractControl): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const startDate = control.value as Date;
-    const endDateControl = control.root.get('endDate');
+    const endDateControl = endControl;
 
     if (startDate && endDateControl?.value && startDate > endDateControl.value) {
       return { startDateError: true };
@@ -14,10 +14,10 @@ export function startDateValidator(): ValidatorFn {
   };
 }
 
-export function endDateValidator(): ValidatorFn {
+export function endDateValidator(startControl: AbstractControl): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const endDate = control.value as Date;
-    const startDateControl = control.root.get('startDate');
+    const startDateControl = startControl
 
     if (endDate && startDateControl?.value && endDate < startDateControl.value) {
       return { endDateError: true };
