@@ -8,9 +8,7 @@ export class NavigateBackDirective {
 
   constructor(private location: Location) {}
 
-  @HostListener('click')
-  goBack() {
+  @HostListener('click') private goBack() {
     this.location.back();
   }
-
 }

@@ -1,6 +1,6 @@
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
-import { RoomsModule } from "../Rooms/rooms.module";
+import { RoomsModule } from "../shared/Rooms/rooms.module";
 import { adminGuard } from "src/app/guards/admin/admin.guard";
 import { ContainerComponent } from "./components/container/container.component";
 
@@ -18,7 +18,7 @@ const routes: Routes = [
       },
       {
         path: 'rooms',
-        loadChildren: () => import("../Rooms/rooms.module").then(m => m.RoomsModule), 
+        loadChildren: () => import("../shared/Rooms/rooms.module").then(m => m.RoomsModule), 
       },
     ]
   }

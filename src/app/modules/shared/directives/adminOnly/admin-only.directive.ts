@@ -11,6 +11,7 @@ export class AdminOnlyDirective {
 
   constructor(
     private templateRef: TemplateRef<any>,
+    // private templateRef: ElementRef<any>,
     private viewContainer: ViewContainerRef,
     private authService: AuthService
   ) {}
