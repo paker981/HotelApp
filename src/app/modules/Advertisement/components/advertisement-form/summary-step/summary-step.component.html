@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Advertisement Preview</mat-card-title>
+    </mat-card-header>
+  <!-- form.valueChanges | async -->
+    <mat-card-content>
+      <p><strong>Title:</strong> {{ form.controls.basicStep.controls.title.value }}</p>
+      <p><strong>Description:</strong> {{ form.controls.basicStep.controls.description.value }}</p>
+      <p><strong>Start Date:</strong> {{ form.controls.basicStep.controls.startDate.value | date:'mediumDate' }}</p>
+      <p><strong>End Date:</strong> {{ form.controls.basicStep.controls.endDate.value | date:'mediumDate' }}</p>
+      <p><strong>Duration:</strong> {{ form.controls.basicStep.controls.duration.value }} sec</p>
+      <p><strong>Selected Services:</strong></p>
+      <ul>
+        <li *ngFor="let service of form.controls.selectedServices.value">{{ service }}</li>
+      </ul>
+      <p><strong>Selected Rooms:</strong></p>
+      <ul *ngIf="form.controls.selectedRooms.value">
+        <li *ngFor="let room of form.controls.selectedRooms.value">{{ room.number }}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>

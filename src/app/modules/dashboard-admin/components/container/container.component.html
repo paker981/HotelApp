@@ -1,0 +1,14 @@
+<nav class="mat-elevation-z2">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <span>My App</span>
+        <span class="nav-buttons">
+          <a mat-button routerLink="/login" routerLinkActive="active" (click)="onLogout()">Log Out</a>
+          <a mat-button routerLink="rooms" routerLinkActive="active">Rooms</a>
+          <a mat-button routerLink="advertisement" routerLinkActive="active">Advertisement</a>
+        </span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+</nav>
+
+<router-outlet></router-outlet>

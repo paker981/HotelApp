@@ -1,0 +1,21 @@
+<div *ngIf="data">
+    <app-room [data]="data">
+        <!-- ng-template vs ng-container -->
+        <!-- <ng-template>dupa</ng-template>
+        <ng-container>dupa</ng-container> -->
+        <ng-template adminOnly>
+            <mat-select [formControl] = "form">
+                <mat-option *ngFor="let option of roomStates | keyvalue" [value]="option.value">
+                  {{ option.value }}
+                </mat-option>
+            </mat-select>
+        </ng-template>
+    </app-room>
+    <div>
+        <button mat-raised-button color="primary" NavigateBack>Back</button>
+        <ng-template adminOnly>
+            <button mat-raised-button color="primary" (click)="onEdit(data.number)">Edit</button>
+        </ng-template>
+        
+    </div>
+</div>
