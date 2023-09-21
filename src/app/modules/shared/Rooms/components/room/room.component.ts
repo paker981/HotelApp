@@ -17,10 +17,10 @@ export class RoomComponent {
     this.cd.detectChanges();
   }
 
-  metoda() {
-    // detach
-    // interval(10) 
-    // zmienia wartość counter++ 
-    // if counter === 10000 to chcesz wyświetlić więc wtedy:  detectChanges()
-  }
+  // metoda() {
+  //   // detach
+  //   // interval(10) 
+  //   // zmienia wartość counter++ 
+  //   // if counter === 10000 to chcesz wyświetlić więc wtedy:  detectChanges()
+  // }
 }

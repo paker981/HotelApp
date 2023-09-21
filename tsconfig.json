@@ -8,6 +8,7 @@
       "@shared/*": ["src/app/modules/shared/*"],
       "@components/*": ["src/app/components/*"],
     },
+    "esModuleInterop": true,
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

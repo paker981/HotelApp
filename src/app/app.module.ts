@@ -9,6 +9,8 @@ import { SessionStorageService } from './services/sessionStorageService.class';
 import { AuthModule } from './modules/Auth/auth.module';
 import { CustomSnackBarComponent } from './components/custom-snack-bar/custom-snack-bar.component';
 import { MaterialModule } from './modules/Material/material.module';
+import { TOKEN_GENERATOR } from './tokens/generator.token';
+import { generateToken } from './helpers/token.generator';
 
 
 @NgModule({
@@ -26,7 +28,13 @@ import { MaterialModule } from './modules/Material/material.module';
   providers: [
     {
       provide: STORAGE_SERVICE, // STORAGE_SERVICE
-      useClass: SessionStorageService
+      useFactory: () => {
+        return new SessionStorageService(window);
+      }
+    },
+    {
+      provide: TOKEN_GENERATOR,
+      useValue: generateToken()
     }
   ],
   bootstrap: [AppComponent]

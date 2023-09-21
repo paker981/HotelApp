@@ -10,33 +10,5 @@ export const rolePattern = /\/dashboard\/([^/]+)\/.*/;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  protected title = 'HotelApp';
-  protected role = null
-
-  constructor(private router: Router, private route: ActivatedRoute) {
-    // Subskrybuj zdarzenie NavigationEnd, aby śledzić zmiany adresu URL
-  }
-
-  protected navigateToDashboard(){
-    const matches = this.matchRole()
-    if (!matches ) {
-      return;
-    }
-    const role = matches[1];
-    this.router.navigate([`/dashboard/${role}`]);
-  }
-
-  protected navigateToAdvertisement(){
-    const matches = this.matchRole()
-    if (!matches ) {
-      return;
-    }
-    const role = matches[1];
-    this.router.navigate([`/dashboard/${role}/advertisement`]);
-  }
-
-  private matchRole(){
-    const url = this.router.routerState.snapshot.url // Wyrażenie regularne do dopasowania "role"
-    return url.match(rolePattern);
-  }
+   title = 'HotelApp';
 }

@@ -2,7 +2,7 @@ export enum RoomState {
     CLEANED = 'cleaned',
     RESERVED = 'reserved',
     DIRTY = 'dirty',
-    TO_CHECK = 'toCheck'
+    TO_CHECK = 'toCheck',
 }
 
 export type Room = {

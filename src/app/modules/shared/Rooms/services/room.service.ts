@@ -18,15 +18,17 @@ export class RoomService {
   private _data: BehaviorSubject<Room[]> = new BehaviorSubject<Room[]>(data);
   data$: Observable<Room[]> = this._data.asObservable();
 
+  set data(data: Room[]) {
+    this._data.next(data);
+  }
+
   updateRoomStatus(roomNumber: number, newState: RoomState) {
     const data = this._data.getValue();
     const roomToUpdate = data.find(room => room.number === roomNumber);
-    console.log(roomToUpdate);
-    console.log(data)
+
     if (roomToUpdate) {
       roomToUpdate.state = newState;
     }
-    console.log(data)
     this._data.next(data);
     return {...roomToUpdate};
   }

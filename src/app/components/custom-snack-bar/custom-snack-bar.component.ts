@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_SNACK_BAR_DATA, MatSnackBar } from '@angular/material/snack-bar';
+import { MAT_SNACK_BAR_DATA, MatSnackBar, MatSnackBarConfig, MatSnackBarRef } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -9,8 +9,7 @@ import { MAT_SNACK_BAR_DATA, MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CustomSnackBarComponent {
 
-  constructor(@Inject(MAT_SNACK_BAR_DATA) protected data: any){}
-
+  constructor(@Inject(MAT_SNACK_BAR_DATA) protected readonly data: any){}
 
   closeSnackbar(){
     this.data.snackBar.dismiss();

@@ -4,9 +4,9 @@ import { Location } from '@angular/common';
 import { RoomState } from '../../types/room.types';
 import { FormControl, Validators } from '@angular/forms';
 import { RoomService } from '../../services/room.service';
-import { CustomSnackBarComponent } from 'src/app/components/custom-snack-bar/custom-snack-bar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { CustomSnackBarComponent } from '../../../../../components/custom-snack-bar/custom-snack-bar.component';
 
 @UntilDestroy()
 @Component({
@@ -35,5 +35,4 @@ export class ViewRoomComponent{
     this.roomService.updateRoomStatus(roomNumber,this.form.value);
     this.location.back();
   }
-
 }

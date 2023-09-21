@@ -1,17 +1,21 @@
-import { AbstractStorageService, Role } from "../interfaces/storage.interface";
+import { Injectable } from "@angular/core";
+import { AbstractSessionStorage, AbstractStorageService, Role } from "../interfaces/storage.interface";
 
 export class SessionStorageService implements AbstractStorageService {
 
+
+    constructor(private readonly window: Window){}
+
     clear(): void {
-        sessionStorage.clear();
+        this.window.sessionStorage.clear();
     }
     
     getData(role: Role): string { // token: string
-        const token = sessionStorage.getItem(role);
+        const token = this.window.sessionStorage.getItem(role);
         return token ? token : '';
     }
     saveData(role: Role, token: string): void {// data:any, token: string
-        sessionStorage.setItem(role, token);
+        this.window.sessionStorage.setItem(role, token);
     }
 
 }
