@@ -17,16 +17,16 @@ export class ServicesStepComponent {
 
   @Input({required: true}) form!: FormArray<FormControl<Services>>;
 
-  protected onServiceChange(event: MatCheckboxChange, service: Services, index: number): void {
+  protected onServiceChange(event: MatCheckboxChange, service: Services): void {
     const selectedServices = this.form;
 
     if (event.checked) {
       selectedServices.push(new FormControl(service) as FormControl<Services>);
-    } else {
-      const index = selectedServices.controls.findIndex(control => control.value === service);
-      if (index !== -1) {
-        selectedServices.removeAt(index);
-      }
+      return;
+    } 
+    const index = selectedServices.controls.findIndex(control => control.value === service);
+    if (index !== -1) {
+      selectedServices.removeAt(index);
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Directive, TemplateRef, ViewContainerRef } from '@angular/core';
-import { Role } from '@app/interfaces/storage.interface';
-import { AuthService } from '@app/modules/Auth/services/auth.service';
+import { Role } from '../../../../interfaces/storage.interface';
+import { AuthService } from '../../../Auth/services/auth.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()
@@ -15,6 +15,10 @@ export class AdminOnlyDirective {
     private viewContainer: ViewContainerRef,
     private authService: AuthService
   ) {}
+
+  get viewContainerRef() {
+    return this.viewContainer;
+  }
 
   ngOnInit() {
     const isAdmin = this.authService.isLoggedIn(Role.ADMIN);

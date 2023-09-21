@@ -7,11 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { endDateValidator, startDateValidator } from '../../validators/date-range.validator';
 // import { dateRangeValidator } from '@Validators/date-range.validator';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { CustomSnackBarComponent } from '@components/custom-snack-bar/custom-snack-bar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { debounceTime, throttleTime } from 'rxjs';
 import { Location } from '@angular/common';
+import { CustomSnackBarComponent } from '@app/components/custom-snack-bar/custom-snack-bar.component';
 
 @UntilDestroy()
 @Component({
@@ -25,9 +25,7 @@ export class AdvertisementContainerComponent {
   protected availableRooms!: Room[];
 
   constructor(
-    private router: Router,
     private snackBar: MatSnackBar,
-    private route: ActivatedRoute,
     private location: Location
     ) {
       // TODO: robić na osobne formGroup dla każdego step'a 
@@ -55,7 +53,6 @@ export class AdvertisementContainerComponent {
       return;
     }
 
-    console.log(this.form.value);
     this.form.reset();
     this.location.back()
   }

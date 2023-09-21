@@ -7,7 +7,7 @@ import { RoomComponent } from './components/room/room.component';
 import { ViewRoomComponent } from './components/view-room/view-room.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared.module';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 @NgModule({
@@ -23,6 +23,7 @@ import { SharedModule } from '../shared.module';
     ReactiveFormsModule,
     SharedModule
 
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class RoomsModule { }

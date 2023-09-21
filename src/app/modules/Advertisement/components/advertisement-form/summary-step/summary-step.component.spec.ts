@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SummaryStepComponent } from './summary-step.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('SummaryStepComponent', () => {
   let component: SummaryStepComponent;
@@ -8,14 +9,20 @@ describe('SummaryStepComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SummaryStepComponent]
+      declarations: [SummaryStepComponent],
+      imports: [ReactiveFormsModule],
+      schemas: [NO_ERRORS_SCHEMA]
     });
+
     fixture = TestBed.createComponent(SummaryStepComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+
+
